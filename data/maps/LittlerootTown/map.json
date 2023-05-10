@@ -270,6 +270,14 @@
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LittlerootTown_EventScript_MaysHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 32,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LittlerootTown_EventScript_NewSign"
     }
   ]
 }

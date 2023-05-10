@@ -1,0 +1,61 @@
+
+mapscripts NewBirchLab_MapScripts {}
+
+script NewBirchLab_EventScript_Pokeball {
+    
+	lockall
+	showmonpic(SPECIES_TRAPINCH, 10, 3)
+	msgbox("Ah, so you want Trapinch?", MSGBOX_YESNO)
+	if(var(VAR_RESULT) == YES){
+	    givemon(SPECIES_TRAPINCH, 5, ITEM_POKE_BALL)
+		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+		 playfanfare(MUS_OBTAIN_ITEM)
+		 msgbox("Recieved Trapinch!")
+		 removeobject(1)
+		 setflag(FLAG_UNUSED_0x020)
+		 call(NicknamePartyMon)
+		}
+		elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
+		 playfanfare(MUS_OBTAIN_ITEM)
+		 msgbox("Recieved Trapinch!")
+		 removeobject(1)
+		 setflag(FLAG_UNUSED_0x020)
+		 call(NicknameBoxMon)
+		}
+		else{
+		 hidemonpic
+		 msgbox("No More Room")
+		}
+	}
+	else{
+	 hidemonpic
+	 msgbox(NewBirchLab_NotChosen)
+	}
+	waitmessage 
+	releaseall
+	end
+}
+
+script NicknamePartyMon{
+    
+	msgbox("Give it a nickname?", MSGBOX_YESNO)
+	hidemonpic
+	if (var(VAR_RESULT) == YES){
+	 call(Common_EventScript_GetGiftMonPartySlot)
+	 call(Common_EventScript_NameReceivedPartyMon)
+	}
+}
+
+script NicknameBoxMon{
+
+    msgbox("Give it a nickname?", MSGBOX_YESNO)
+	hidemonpic
+	if (var(VAR_RESULT) == YES){
+	 call(Common_EventScript_NameReceivedBoxMon)
+	}
+	msgbox("Transferred to PC!")
+}
+
+text NewBirchLab_NotChosen{
+     "You don't want that one?"
+}
