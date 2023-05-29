@@ -59,3 +59,30 @@ script NicknameBoxMon{
 text NewBirchLab_NotChosen{
      "You don't want that one?"
 }
+
+script NewBirchLab_EventScript_GiveJournal {
+
+    lockall
+	faceplayer
+	if (flag(FLAG_SYS_QUEST_MENU_GET)) {
+	    msgbox(NewBirchLab_EventScript_ExplainJournal)
+	    waitmessage
+	    releaseall
+	    end
+	} else {
+	    msgbox("Hey, here's a journal!")
+	    playfanfare(MUS_OBTAIN_ITEM)
+	    msgbox("Recieved Journal!")
+	    setflag(FLAG_SYS_QUEST_MENU_GET)
+	    waitmessage
+	    releaseall
+	    end
+}
+
+}
+
+text NewBirchLab_EventScript_ExplainJournal {
+     "That journal will be very useful.\n"
+	 "You can use it to keep track of\n"
+	 "requests you get from others."
+}

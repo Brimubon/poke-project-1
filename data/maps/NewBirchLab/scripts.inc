@@ -69,6 +69,25 @@ NicknameBoxMon_2:
 	goto NicknameBoxMon_1
 
 
+NewBirchLab_EventScript_GiveJournal::
+	lockall
+	faceplayer
+	goto_if_set FLAG_SYS_QUEST_MENU_GET, NewBirchLab_EventScript_GiveJournal_1
+	msgbox NewBirchLab_EventScript_GiveJournal_Text_0
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox NewBirchLab_EventScript_GiveJournal_Text_1
+	setflag FLAG_SYS_QUEST_MENU_GET
+	waitmessage
+	releaseall
+	end
+
+NewBirchLab_EventScript_GiveJournal_1:
+	msgbox NewBirchLab_EventScript_ExplainJournal
+	waitmessage
+	releaseall
+	end
+
+
 NewBirchLab_EventScript_Pokeball_Text_0:
 	.string "Ah, so you want Trapinch?$"
 
@@ -84,5 +103,16 @@ NicknamePartyMon_Text_0:
 NicknameBoxMon_Text_0:
 	.string "Transferred to PC!$"
 
+NewBirchLab_EventScript_GiveJournal_Text_0:
+	.string "Hey, here's a journal!$"
+
+NewBirchLab_EventScript_GiveJournal_Text_1:
+	.string "Recieved Journal!$"
+
 NewBirchLab_NotChosen::
 	.string "You don't want that one?$"
+
+NewBirchLab_EventScript_ExplainJournal::
+	.string "That journal will be very useful.\n"
+	.string "You can use it to keep track of\n"
+	.string "requests you get from others.$"
