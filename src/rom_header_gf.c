@@ -87,8 +87,10 @@ struct GFRomHeader
     u8 pcItemsCount;
     u32 pcItemsOffset;
     u32 giftRibbonsOffset;
+    #ifndef FREE_ENIGMA_BERRY
     u32 enigmaBerryOffset;
     u32 enigmaBerrySize;
+    #endif
     const u8 *moveDescriptions;
     u32 unk20;
 };
@@ -114,7 +116,7 @@ static const struct GFRomHeader sGFRomHeader = {
     .varsOffset = offsetof(struct SaveBlock1, vars),
     .pokedexOffset = offsetof(struct SaveBlock2, pokedex),
     .seen1Offset = offsetof(struct SaveBlock1, dexSeen),
-    .seen2Offset = offsetof(struct SaveBlock1, dexSeen), // dex flags are combined, just provide the same pointer
+    .seen2Offset = offsetof(struct SaveBlock1, dexSeen),  // dex flags are combined, just provide the same pointer
     .pokedexVar = VAR_NATIONAL_DEX - VARS_START,
     .pokedexFlag = FLAG_RECEIVED_POKEDEX_FROM_BIRCH,
     .mysteryEventFlag = FLAG_SYS_MYSTERY_EVENT_ENABLE,
@@ -168,8 +170,10 @@ static const struct GFRomHeader sGFRomHeader = {
     .pcItemsCount = PC_ITEMS_COUNT,
     .pcItemsOffset = offsetof(struct SaveBlock1, pcItems),
     .giftRibbonsOffset = offsetof(struct SaveBlock1, giftRibbons),
+    #ifndef FREE_ENIGMA_BERRY
     .enigmaBerryOffset = offsetof(struct SaveBlock1, enigmaBerry),
     .enigmaBerrySize = sizeof(struct EnigmaBerry),
+    #endif
     .moveDescriptions = NULL,
     .unk20 = 0x00000000, // 0xFFFFFFFF in FRLG
 };

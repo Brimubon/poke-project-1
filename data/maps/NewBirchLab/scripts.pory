@@ -82,7 +82,5 @@ script NewBirchLab_EventScript_GiveJournal {
 }
 
 text NewBirchLab_EventScript_ExplainJournal {
-     "That journal will be very useful.\n"
-	 "You can use it to keep track of\n"
-	 "requests you get from others."
+     format("That journal will be very useful. You can use it to keep track of requests you get from others.")
 }

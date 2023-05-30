@@ -113,6 +113,6 @@ NewBirchLab_NotChosen::
 	.string "You don't want that one?$"
 
 NewBirchLab_EventScript_ExplainJournal::
-	.string "That journal will be very useful.\n"
-	.string "You can use it to keep track of\n"
-	.string "requests you get from others.$"
+	.string "That journal will be very useful. You\n"
+	.string "can use it to keep track of requests\l"
+	.string "you get from others.$"
