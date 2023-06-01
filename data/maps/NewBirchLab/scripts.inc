@@ -88,6 +88,26 @@ NewBirchLab_EventScript_GiveJournal_1:
 	end
 
 
+NewBirchLab_EventScript_GiveDexnav::
+	lockall
+	faceplayer
+	goto_if_set FLAG_SYS_DEXNAV_GET, NewBirchLab_EventScript_GiveDexnav_1
+	msgbox NewBirchLab_EventScript_GiveDexnav_Text_0
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox NewBirchLab_EventScript_GiveDexnav_Text_1
+	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DETECTOR_MODE
+	waitmessage
+	releaseall
+	end
+
+NewBirchLab_EventScript_GiveDexnav_1:
+	msgbox NewBirchLab_EventScript_AfterDexnav
+	waitmessage
+	releaseall
+	end
+
+
 NewBirchLab_EventScript_Pokeball_Text_0:
 	.string "Ah, so you want Trapinch?$"
 
@@ -109,6 +129,12 @@ NewBirchLab_EventScript_GiveJournal_Text_0:
 NewBirchLab_EventScript_GiveJournal_Text_1:
 	.string "Recieved Journal!$"
 
+NewBirchLab_EventScript_GiveDexnav_Text_0:
+	.string "Hey, take this Dexnav!$"
+
+NewBirchLab_EventScript_GiveDexnav_Text_1:
+	.string "Recieved Dexnav!$"
+
 NewBirchLab_NotChosen::
 	.string "You don't want that one?$"
 
@@ -116,3 +142,7 @@ NewBirchLab_EventScript_ExplainJournal::
 	.string "That journal will be very useful. You\n"
 	.string "can use it to keep track of requests\l"
 	.string "you get from others.$"
+
+NewBirchLab_EventScript_AfterDexnav::
+	.string "I would try explaining the Dexnav, but\n"
+	.string "you already know how to use it.$"

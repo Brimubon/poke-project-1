@@ -83,4 +83,29 @@ script NewBirchLab_EventScript_GiveJournal {
 
 text NewBirchLab_EventScript_ExplainJournal {
      format("That journal will be very useful. You can use it to keep track of requests you get from others.")
+} 
+
+script NewBirchLab_EventScript_GiveDexnav {
+
+    lockall
+	faceplayer
+	if(flag(FLAG_SYS_DEXNAV_GET)) {
+	   msgbox(NewBirchLab_EventScript_AfterDexnav)
+	   waitmessage
+	   releaseall
+	   end
+	} else {
+	    msgbox("Hey, take this Dexnav!")
+		playfanfare(MUS_OBTAIN_ITEM)
+		msgbox("Recieved Dexnav!")
+		setflag(FLAG_SYS_DEXNAV_GET)
+		setflag(FLAG_SYS_DETECTOR_MODE)
+		waitmessage
+		releaseall
+		end
+	}
+}
+
+text NewBirchLab_EventScript_AfterDexnav {
+    format("I would try explaining the Dexnav, but you already know how to use it.")
 }

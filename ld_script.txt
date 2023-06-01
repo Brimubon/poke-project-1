@@ -345,6 +345,7 @@ SECTIONS {
         src/pokemon_debug.o(.text);
         src/expansion_intro.o(.text);
 		src/quests.o(.text);
+		src/dexnav.o(.text);
 		
     } =0
 
@@ -714,6 +715,7 @@ SECTIONS {
         src/pokemon_debug.o(.rodata);
         src/expansion_intro.o(.rodata);
 		src/quests.o(.rodata);
+		src/dexnav.o(.rodata);
     } =0
 
     song_data :
