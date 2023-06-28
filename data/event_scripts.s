@@ -1064,3 +1064,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/NewBirchLab/scripts.inc"
 	.include "data/scripts/dexnav.inc"
 	
+
+	.include "data/maps/NewRoute1/scripts.inc"

@@ -79,7 +79,6 @@
           "encounter_rates": [
             30,
             20,
-            20,
             20
           ]
         }
@@ -169,12 +168,7 @@
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_SQUIRTLE"
-              },
-              {
-                "min_level": 3,
-                "max_level": 3,
-                "species": "SPECIES_RIOLU"
+                "species": "SPECIES_BAGON"
               }
             ]
           }

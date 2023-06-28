@@ -4420,6 +4420,16 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/NewBirchLab/border.bin",
       "blockdata_filepath": "data/layouts/NewBirchLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_ROUTE1",
+      "name": "NewRoute1_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/NewRoute1/border.bin",
+      "blockdata_filepath": "data/layouts/NewRoute1/map.bin"
     }
   ]
 }
