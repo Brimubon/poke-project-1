@@ -4430,6 +4430,36 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/NewRoute1/border.bin",
       "blockdata_filepath": "data/layouts/NewRoute1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY_PLAYER_ROOM",
+      "name": "SSDiscoveryPlayerRoom_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscoveryPlayerRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscoveryPlayerRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY_ROOMS_FLOOR1",
+      "name": "SSDiscoveryRoomsFloor1_Layout",
+      "width": 21,
+      "height": 16,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscoveryRoomsFloor1/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscoveryRoomsFloor1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY_NPCROOM1",
+      "name": "SSDiscoveryNPCRoom1_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscoveryNPCRoom1/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscoveryNPCRoom1/map.bin"
     }
   ]
 }

@@ -1066,3 +1066,9 @@ Common_EventScript_LegendaryFlewAway::
 	
 
 	.include "data/maps/NewRoute1/scripts.inc"
+
+	.include "data/maps/SSDiscoveryPlayerRoom/scripts.inc"
+
+	.include "data/maps/SSDiscoveryRoomsFloor1/scripts.inc"
+
+	.include "data/maps/SSDiscoveryNPCRoom1/scripts.inc"
