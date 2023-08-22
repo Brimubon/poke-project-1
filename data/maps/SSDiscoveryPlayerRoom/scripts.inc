@@ -1,0 +1,2 @@
+SSDiscoveryPlayerRoom_MapScripts::
+	.byte 0
