@@ -1,2 +1,20 @@
 SSDiscoveryNPCRoom1_MapScripts::
 	.byte 0
+
+
+SSDiscovery_NPCRoom1_Hiker::
+	lock
+	faceplayer
+	msgbox SSDiscovery_NPCRoom1_Hiker_Text_0
+	msgbox SSDiscovery_NPCRoom1_Hiker_Text_1
+	release
+	end
+
+
+SSDiscovery_NPCRoom1_Hiker_Text_0:
+	.string "I hear there's a volcano located in the\n"
+	.string "center of Astrua.$"
+
+SSDiscovery_NPCRoom1_Hiker_Text_1:
+	.string "I'm making it my personal mission to see\n"
+	.string "the inside of it!$"

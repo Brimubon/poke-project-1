@@ -4460,6 +4460,66 @@
       "secondary_tileset": "gTileset_InsideShip",
       "border_filepath": "data/layouts/SSDiscoveryNPCRoom1/border.bin",
       "blockdata_filepath": "data/layouts/SSDiscoveryNPCRoom1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY_NPCROOM2",
+      "name": "SSDiscoveryNPCRoom2_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscoveryNPCRoom2/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscoveryNPCRoom2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY_NPCROOM3",
+      "name": "SSDiscoveryNPCRoom3_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscoveryNPCRoom3/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscoveryNPCRoom3/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY_STORAGE_ROOM",
+      "name": "SSDiscoveryStorageRoom_Layout",
+      "width": 20,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscoveryStorageRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscoveryStorageRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY_ROOMS_FLOOR2",
+      "name": "SSDiscoveryRoomsFloor2_Layout",
+      "width": 21,
+      "height": 16,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscoveryRoomsFloor2/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscoveryRoomsFloor2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY2NPCROOM1",
+      "name": "SSDiscovery2NPCRoom1_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscovery2NPCRoom1/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscovery2NPCRoom1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SSDISCOVERY2NPCROOM2",
+      "name": "SSDiscovery2NPCRoom2_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/SSDiscovery2NPCRoom2/border.bin",
+      "blockdata_filepath": "data/layouts/SSDiscovery2NPCRoom2/map.bin"
     }
   ]
 }

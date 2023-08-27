@@ -1072,3 +1072,15 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/SSDiscoveryRoomsFloor1/scripts.inc"
 
 	.include "data/maps/SSDiscoveryNPCRoom1/scripts.inc"
+
+	.include "data/maps/SSDiscoveryNPCRoom2/scripts.inc"
+
+	.include "data/maps/SSDiscoveryNPCRoom3/scripts.inc"
+
+	.include "data/maps/SSDiscoveryStorageRoom/scripts.inc"
+
+	.include "data/maps/SSDiscoveryRoomsFloor2/scripts.inc"
+
+	.include "data/maps/SSDiscovery2NPCRoom1/scripts.inc"
+
+	.include "data/maps/SSDiscovery2NPCRoom2/scripts.inc"

@@ -627,6 +627,12 @@
   "gMapGroup_NewIndoorStartArea": [
     "SSDiscoveryPlayerRoom",
     "SSDiscoveryRoomsFloor1",
-    "SSDiscoveryNPCRoom1"
+    "SSDiscoveryNPCRoom1",
+    "SSDiscoveryNPCRoom2",
+    "SSDiscoveryNPCRoom3",
+    "SSDiscoveryStorageRoom",
+    "SSDiscoveryRoomsFloor2",
+    "SSDiscovery2NPCRoom1",
+    "SSDiscovery2NPCRoom2"
   ]
 }
