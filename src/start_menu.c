@@ -81,7 +81,7 @@ enum
     SAVE_ERROR
 };
 
-#define StartMenu_ActionNum 8
+
 
 // IWRAM common
 bool8 (*gMenuCallback)(void);
@@ -91,8 +91,7 @@ EWRAM_DATA static u8 sSafariBallsWindowId = 0;
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
-EWRAM_DATA static u8 sCurrentStartMenuActions[StartMenu_ActionNum] = {0};
-EWRAM_DATA static u8 startMenuTaskId = 0;
+EWRAM_DATA static u8 sCurrentStartMenuActions[9] = {0};
 EWRAM_DATA static u8 sInitStartMenuData[2] = {0};
 
 EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
@@ -491,20 +490,18 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 {
     s8 index = *pIndex;
 	
-    struct ListMenuItem *tempItems = (void*)&gStringVar4[0x200];
-    gMultiuseListMenuTemplate.items=tempItems;
+
 
     do
     {
         if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuPlayerNameCallback)
         {
-            tempItems[index].name = gSaveBlock2Ptr->playerName;
-            tempItems[index].id = index;
+           PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
         }
         else
         {
-            tempItems[index].name = sStartMenuItems[sCurrentStartMenuActions[index]].text;
-            tempItems[index].id = index;
+           StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
+           AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
         }
 
         index++;
@@ -522,28 +519,6 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
     return FALSE;
 }
 
-#include "list_menu.h"
-static const struct ListMenuTemplate sCommonListMenuTemplate =
-{
-    .items = 0,
-    .moveCursorFunc = 0,
-    .itemPrintFunc = 0,
-    .totalItems = 0,
-    .maxShowed = 7,
-    .windowId = 0,
-    .header_X = 0,
-    .item_X = 8,
-    .cursor_X = 0,
-    .upText_Y = 1,
-    .cursorPal = 2,
-    .fillValue = 1,
-    .cursorShadowPal = 3,
-    .lettersSpacing = 1,
-    .itemVerticalPadding = 0,
-    .scrollMultiple = 0,
-    .fontId = 1,
-    .cursorKind = 0
-};
 
 
 static bool32 InitStartMenuStep(void)
@@ -561,10 +536,7 @@ static bool32 InitStartMenuStep(void)
         break;
     case 2:
         LoadMessageBoxAndBorderGfx();
-        if (sNumStartMenuActions<8)
-            DrawStdWindowFrame(AddStartMenuWindow(sNumStartMenuActions), FALSE);
-        else
-            DrawStdWindowFrame(AddStartMenuWindow(7), FALSE);
+        DrawStdWindowFrame(AddStartMenuWindow(sNumStartMenuActions), FALSE);
         sInitStartMenuData[1] = 0;
         sInitStartMenuData[0]++;
         break;
@@ -576,20 +548,11 @@ static bool32 InitStartMenuStep(void)
         sInitStartMenuData[0]++;
         break;
     case 4:
-        gMultiuseListMenuTemplate = sCommonListMenuTemplate;
-        gMultiuseListMenuTemplate.windowId = GetStartMenuWindowId();
         if (PrintStartMenuActions(&sInitStartMenuData[1], 2))
-        {
-            gMultiuseListMenuTemplate.totalItems = sNumStartMenuActions;
-            //If you add a new option and find bug, please modify here
-            if(sStartMenuCursorPos < 5)
-                gTasks[startMenuTaskId].data[5] = ListMenuInit(&gMultiuseListMenuTemplate, 0, sStartMenuCursorPos);
-            else
-                gTasks[startMenuTaskId].data[5] = ListMenuInit(&gMultiuseListMenuTemplate, 1, sStartMenuCursorPos - 1);
             sInitStartMenuData[0]++;
-        }
         break;
     case 5:
+	    sStartMenuCursorPos = InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
         CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_MAP);
         return TRUE;
     }
@@ -619,7 +582,6 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     sInitStartMenuData[1] = 0;
     taskId = CreateTask(StartMenuTask, 0x50);
     SetTaskFuncWithFollowupFunc(taskId, StartMenuTask, followupFunc);
-    startMenuTaskId = taskId;
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)
@@ -674,21 +636,27 @@ void ShowStartMenu(void)
 
 static bool8 HandleStartMenuInput(void)
 {
-    s32 input = ListMenu_ProcessInput(gTasks[startMenuTaskId].data[5]);
+   
+    if (JOY_NEW(DPAD_UP))
+    {
+        PlaySE(SE_SELECT);
+        sStartMenuCursorPos = Menu_MoveCursor(-1);
+    }
 
-    if (input >= 0)
-    { 
-        sStartMenuCursorPos = input;
+    if (JOY_NEW(DPAD_DOWN))
+    {
+        PlaySE(SE_SELECT);
+        sStartMenuCursorPos = Menu_MoveCursor(1);
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
         PlaySE(SE_SELECT);
         if (sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void == StartMenuPokedexCallback)
         {
             if (GetNationalPokedexCount(FLAG_GET_SEEN) == 0)
                 return FALSE;
-        } 
-		
-        if (sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_DEXNAV
-          && MapHasNoEncounterData())
-            return FALSE;
+        }
 
         gMenuCallback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;
 
@@ -1137,7 +1105,7 @@ static u8 SaveFileExistsCallback(void)
     }
     else
     {
-        sSaveDialogCallback = SaveSavingMessageCallback;
+        ShowSaveMessage(gText_AlreadySavedFile, SaveConfirmOverwriteCallback);
     }
 
     return SAVE_IN_PROGRESS;
@@ -1518,7 +1486,6 @@ void SaveForBattleTowerLink(void)
 static void HideStartMenuWindow(void)
 {
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
-    DestroyListMenuTask(gTasks[startMenuTaskId].data[5], 0 ,0);
     RemoveStartMenuWindow();
     ScriptUnfreezeObjectEvents();
     UnlockPlayerFieldControls();
