@@ -621,4 +621,7 @@ extern const u8 EventScript_TooDark[];
 extern const u8 EventScript_MovedTooFast[];
 
 
+// start menu
+extern const u8 EventScript_StartMenu[];
+
 #endif // GUARD_EVENT_SCRIPTS_H

@@ -1887,14 +1887,16 @@
     call_if_eq VAR_RESULT, FALSE, \dest
     .endm
 
-	.macro _dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req argv:vararg
+	.macro _dynmultichoice left:req, top:req, height:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, choicesSpacing:req, callbacks:req argv:vararg
 	.byte 0xe6
 	.byte \left
 	.byte \top
+	.byte \height
 	.byte \ignoreBPress
 	.byte \maxBeforeScroll
 	.byte \shouldSort
 	.2byte \initialSelected
+	.byte \choicesSpacing
 	.byte \callbacks
 	.byte (.Ldynmultichoice_\@_2 - .Ldynmultichoice_\@_1) / 4
 .Ldynmultichoice_\@_1:
@@ -1905,8 +1907,9 @@
 	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
 	@ Lists of options are provided in argv.
 	@ If ignoreBPress is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
-	.macro dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, initialSelected:req, callbacks:req argv:vararg
-	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, FALSE, \initialSelected, \callbacks, \argv
+	@ If height is set to 0xFF, the size of a dynamic multichoice window on the screen will vary depending on the amount of options in argv.
+	.macro dynmultichoice left:req, top:req, height:req, ignoreBPress:req, maxBeforeScroll:req, initialSelected:req, choicesSpacing:req, callbacks:req argv:vararg
+	_dynmultichoice \left, \top, \height, \ignoreBPress, \maxBeforeScroll, FALSE, \initialSelected, \callbacks, \choicesSpacing, \argv
 	.endm
 
 	.macro dynmultipush name:req, id:req
@@ -1915,8 +1918,8 @@
 	.2byte \id
 	.endm
 
-	.macro dynmultistack left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req
-	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
+	.macro dynmultistack left:req, top:req, height:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, choicesSpacing:req, callbacks:req
+	_dynmultichoice \left, \top, \height, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \choicesSpacing, \callbacks, NULL
 	.endm
 
 
@@ -2208,4 +2211,10 @@
 	setvar VAR_0x8004, \trainer1
 	callnative CreateTrainerPartyForPlayer
 	trainerbattle_no_intro \trainer2, NULL
+	.endm
+
+	@ Checks if the Player is currently in the Battle Pyramid.
+	.macro goto_if_in_battle_pyramid dest:req
+	specialvar VAR_RESULT, InBattlePyramid
+	goto_if_eq VAR_RESULT, TRUE, \dest
 	.endm

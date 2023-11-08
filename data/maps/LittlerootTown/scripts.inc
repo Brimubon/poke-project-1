@@ -1039,9 +1039,9 @@ LittlerootTown_EventScript_MultichoiceTests::
 	random ITEMS_COUNT
 	bufferitemname STR_VAR_3, VAR_RESULT
 	dynmultipush LittlerootTown_EventScript_MultichoiceTests_Text_2, VAR_RESULT
-	dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_SHOW_ITEM
-	dynmultichoice 0, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE, LittlerootTown_EventScript_MultichoiceTests_Text_3, LittlerootTown_EventScript_MultichoiceTests_Text_4, LittlerootTown_EventScript_MultichoiceTests_Text_5
-	dynmultichoice 0, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE, LittlerootTown_EventScript_MultichoiceTests_Text_3, LittlerootTown_EventScript_MultichoiceTests_Text_4, LittlerootTown_EventScript_MultichoiceTests_Text_5, LittlerootTown_EventScript_MultichoiceTests_Text_6
+	dynmultistack 0, 0, 6, TRUE, 6, FALSE, VAR_0x800A, 0, DYN_MULTICHOICE_CB_SHOW_ITEM
+	dynmultichoice 0, 0, 8, TRUE, 6, 0, 0, DYN_MULTICHOICE_CB_NONE, LittlerootTown_EventScript_MultichoiceTests_Text_3, LittlerootTown_EventScript_MultichoiceTests_Text_4, LittlerootTown_EventScript_MultichoiceTests_Text_5
+	dynmultichoice 0, 0, 8, TRUE, 3, 0, 0, DYN_MULTICHOICE_CB_NONE, LittlerootTown_EventScript_MultichoiceTests_Text_3, LittlerootTown_EventScript_MultichoiceTests_Text_4, LittlerootTown_EventScript_MultichoiceTests_Text_5, LittlerootTown_EventScript_MultichoiceTests_Text_6
 	buffernumberstring STR_VAR_1, VAR_RESULT
 	msgbox LittlerootTown_EventScript_MultichoiceTests_Text_0, MSGBOX_DEFAULT
 	closemessage

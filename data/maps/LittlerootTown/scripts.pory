@@ -1044,15 +1044,15 @@ script LittlerootTown_EventScript_MultichoiceTests {
     random(ITEMS_COUNT)
     bufferitemname(STR_VAR_3, VAR_RESULT)
     dynmultipush("{STR_VAR_3}", VAR_RESULT)
-    dynmultistack(0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_SHOW_ITEM)
+    dynmultistack(0, 0, 6, TRUE, 6, FALSE, VAR_0x800A, 0, DYN_MULTICHOICE_CB_SHOW_ITEM)
 
     // inline example without scrolling
 
-    dynmultichoice(0,0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE, "Option 1", "Option 2", "Option 3")
+    dynmultichoice(0, 0, 8, TRUE, 6, 0, 0, DYN_MULTICHOICE_CB_NONE, "Option 1", "Option 2", "Option 3")
 
     // inline example with scrolling
 
-    dynmultichoice(0,0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Option 1", "Option 2", "Option 3", "Option 4")
+    dynmultichoice(0, 0, 8, TRUE, 3, 0, 0, DYN_MULTICHOICE_CB_NONE, "Option 1", "Option 2", "Option 3", "Option 4")
 
     buffernumberstring(STR_VAR_1, VAR_RESULT)
     msgbox("{STR_VAR_1}", MSGBOX_DEFAULT)
