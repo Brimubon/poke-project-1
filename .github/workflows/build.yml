@@ -39,8 +39,9 @@ jobs:
         working-directory: agbcc
 
       - name: Agbcc
-        run: make -j${nproc} -O all
-
+        run: | 
+          make -j${nproc} -O all
+          chmod +x tools/poryscript/poryscript
       - name: Modern
         env:
           MODERN: 1
