@@ -42,6 +42,7 @@ jobs:
         run: | 
           make -j${nproc} -O all
           chmod +x tools/poryscript/poryscript
+          chmod 777 convert_inc.sh
       - name: Modern
         env:
           MODERN: 1
