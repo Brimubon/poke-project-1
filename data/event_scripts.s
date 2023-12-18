@@ -1295,3 +1295,5 @@ StartMenu_Text_Rest:
 	.include "data/maps/SSDiscovery2NPCRoom1/scripts.inc"
 
 	.include "data/maps/SSDiscovery2NPCRoom2/scripts.inc"
+
+	.include "data/maps/StartingPort/scripts.inc"

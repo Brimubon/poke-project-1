@@ -633,6 +633,7 @@
     "SSDiscoveryStorageRoom",
     "SSDiscoveryRoomsFloor2",
     "SSDiscovery2NPCRoom1",
-    "SSDiscovery2NPCRoom2"
+    "SSDiscovery2NPCRoom2",
+    "StartingPort"
   ]
 }

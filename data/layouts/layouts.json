@@ -4520,6 +4520,16 @@
       "secondary_tileset": "gTileset_InsideShip",
       "border_filepath": "data/layouts/SSDiscovery2NPCRoom2/border.bin",
       "blockdata_filepath": "data/layouts/SSDiscovery2NPCRoom2/map.bin"
+    },
+    {
+      "id": "LAYOUT_STARTING_PORT",
+      "name": "StartingPort_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/StartingPort/border.bin",
+      "blockdata_filepath": "data/layouts/StartingPort/map.bin"
     }
   ]
 }

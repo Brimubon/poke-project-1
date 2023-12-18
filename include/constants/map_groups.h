@@ -603,6 +603,7 @@
 #define MAP_SSDISCOVERY_ROOMS_FLOOR2 (6 | (34 << 8))
 #define MAP_SSDISCOVERY2NPCROOM1     (7 | (34 << 8))
 #define MAP_SSDISCOVERY2NPCROOM2     (8 | (34 << 8))
+#define MAP_STARTING_PORT            (9 | (34 << 8))
 
 #define MAP_GROUPS_COUNT 35
 
