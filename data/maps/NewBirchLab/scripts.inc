@@ -4,7 +4,7 @@ NewBirchLab_MapScripts::
 
 NewBirchLab_EventScript_Pokeball::
 	lockall
-	showmonpic SPECIES_TRAPINCH, 10, 3
+	showmonpic SPECIES_ZANGOOSE, 10, 3
 	msgbox NewBirchLab_EventScript_Pokeball_Text_0, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq NewBirchLab_EventScript_Pokeball_2
@@ -16,7 +16,7 @@ NewBirchLab_EventScript_Pokeball_1:
 	end
 
 NewBirchLab_EventScript_Pokeball_2:
-	givemon SPECIES_TRAPINCH, 5, ITEM_POKE_BALL
+	givemon SPECIES_ZANGOOSE, 6, ITEM_POKE_BALL
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq NewBirchLab_EventScript_Pokeball_5
 	compare VAR_RESULT, MON_GIVEN_TO_PC
@@ -109,13 +109,13 @@ NewBirchLab_EventScript_GiveDexnav_1:
 
 
 NewBirchLab_EventScript_Pokeball_Text_0:
-	.string "Ah, so you want Trapinch?$"
+	.string "Oh, a free Zangoose! Take it?$"
 
 NewBirchLab_EventScript_Pokeball_Text_1:
-	.string "Recieved Trapinch!$"
+	.string "Recieved Zangoose!$"
 
 NewBirchLab_EventScript_Pokeball_Text_2:
-	.string "No More Room$"
+	.string "No More Room.$"
 
 NicknamePartyMon_Text_0:
 	.string "Give it a nickname?$"
@@ -136,7 +136,7 @@ NewBirchLab_EventScript_GiveDexnav_Text_1:
 	.string "Recieved Dexnav!$"
 
 NewBirchLab_NotChosen::
-	.string "You don't want that one?$"
+	.string "But it's free...$"
 
 NewBirchLab_EventScript_ExplainJournal::
 	.string "That journal will be very useful. You\n"

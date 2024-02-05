@@ -4,27 +4,27 @@ mapscripts NewBirchLab_MapScripts {}
 script NewBirchLab_EventScript_Pokeball {
     
 	lockall
-	showmonpic(SPECIES_TRAPINCH, 10, 3)
-	msgbox("Ah, so you want Trapinch?", MSGBOX_YESNO)
+	showmonpic(SPECIES_ZANGOOSE, 10, 3)
+	msgbox("Oh, a free Zangoose! Take it?", MSGBOX_YESNO)
 	if(var(VAR_RESULT) == YES){
-	    givemon(SPECIES_TRAPINCH, 5, ITEM_POKE_BALL)
+	    givemon(SPECIES_ZANGOOSE, 6, ITEM_POKE_BALL)
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
 		 playfanfare(MUS_OBTAIN_ITEM)
-		 msgbox("Recieved Trapinch!")
+		 msgbox("Recieved Zangoose!")
 		 removeobject(1)
 		 setflag(FLAG_UNUSED_0x020)
 		 call(NicknamePartyMon)
 		}
 		elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
 		 playfanfare(MUS_OBTAIN_ITEM)
-		 msgbox("Recieved Trapinch!")
+		 msgbox("Recieved Zangoose!")
 		 removeobject(1)
 		 setflag(FLAG_UNUSED_0x020)
 		 call(NicknameBoxMon)
 		}
 		else{
 		 hidemonpic
-		 msgbox("No More Room")
+		 msgbox("No More Room.")
 		}
 	}
 	else{
@@ -57,7 +57,7 @@ script NicknameBoxMon{
 }
 
 text NewBirchLab_NotChosen{
-     "You don't want that one?"
+     "But it's free..."
 }
 
 script NewBirchLab_EventScript_GiveJournal {

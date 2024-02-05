@@ -1487,6 +1487,8 @@ static u16 BuildMenuTemplate(void)
 	gMultiuseListMenuTemplate.itemPrintFunc = GenerateStateAndPrint;
 	gMultiuseListMenuTemplate.scrollMultiple = LIST_MULTIPLE_SCROLL_DPAD;
 	gMultiuseListMenuTemplate.cursorKind = 0;
+	
+	return NULL;
 }
 
 u8 GetModeAndGenerateList()
@@ -1523,7 +1525,8 @@ static u8 CountNumberListRows()
 		case SORT_DONE:
 			return CountCompletedQuests() + 1;
 	}
-
+    
+	return NULL;
 }
 
 u8 *DefineQuestOrder()
@@ -1918,6 +1921,8 @@ u8 PopulateListRowNameAndId(u8 row, u8 countQuest)
 {
 	sListMenuItems[row].name = questNameArray[countQuest];
 	sListMenuItems[row].id = countQuest;
+	
+	return NULL;
 }
 
 static bool8 DoesQuestHaveChildrenAndNotInactive(u16 itemId)
@@ -2172,7 +2177,7 @@ void DetermineSpriteType(s32 questId)
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 {
 	u8 *ptr = &sItemMenuIconSpriteIds[10];
-	u8 spriteId;
+	u8 spriteId = 0;
 	struct SpriteSheet spriteSheet;
 	struct CompressedSpritePalette spritePalette;
 	struct SpriteTemplate *spriteTemplate;
@@ -2303,6 +2308,8 @@ u8 GenerateQuestState(u8 questId)
 	{
 		StringCopy(gStringVar4, sText_Empty);
 	}
+	
+	return NULL;
 }
 
 void PrintQuestState(u8 windowId, u8 y, u8 colorIndex)
@@ -2494,6 +2501,8 @@ u8 ManageFavorites(u8 selectedQuestId)
 	{
 		QuestMenu_GetSetQuestState(selectedQuestId, FLAG_SET_FAVORITE);
 	}
+	
+	return NULL;
 }
 
 static void Task_QuestMenuCleanUp(u8 taskId)

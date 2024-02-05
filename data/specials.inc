@@ -554,3 +554,11 @@ gSpecials::
 	def_special Script_StartMenu_OpenRetireSafari
 	def_special Script_StartMenu_OpenRetireBattlePyramid
 @ Start menu functions end above:
+
+	def_special GetNumberSprayStrength
+	def_special GetSprayId
+	def_special GetLastUsedSprayType
+	def_special TrySkyBattle
+	def_special VsSeekerResetObjectMovementAfterChargeComplete
+	def_special VsSeekerFreezeObjectsAfterChargeComplete
+

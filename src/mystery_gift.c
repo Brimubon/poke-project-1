@@ -37,6 +37,8 @@ struct WonderNews *GetSavedWonderNews(void)
 {
     #ifndef FREE_BATTLE_TOWER_E_READER
     return &gSaveBlock1Ptr->mysteryGift.news;
+	#else
+	return FALSE;
 	#endif
 }
 
@@ -44,6 +46,8 @@ struct WonderCard *GetSavedWonderCard(void)
 {
     #ifndef FREE_BATTLE_TOWER_E_READER
     return &gSaveBlock1Ptr->mysteryGift.card;
+	#else
+	return FALSE;
     #endif
 }
 
@@ -51,20 +55,28 @@ struct WonderCardMetadata *GetSavedWonderCardMetadata(void)
 {
     #ifndef FREE_BATTLE_TOWER_E_READER
     return &gSaveBlock1Ptr->mysteryGift.cardMetadata;
+	#else
+	return FALSE;
 	#endif
+	
 }
 
 struct WonderNewsMetadata *GetSavedWonderNewsMetadata(void)
 {
 	#ifndef FREE_BATTLE_TOWER_E_READER
     return &gSaveBlock1Ptr->mysteryGift.newsMetadata;
+	#else
+	return FALSE;
 	#endif
+	
 }
 
 u16 *GetQuestionnaireWordsPtr(void)
 {
     #ifndef FREE_BATTLE_TOWER_E_READER
     return gSaveBlock1Ptr->mysteryGift.questionnaireWords;
+	#else
+	return FALSE;
     #endif
 }
 
