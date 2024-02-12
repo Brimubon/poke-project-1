@@ -168,8 +168,6 @@
 #define STDSTRING_MEDICINE         30
 #define STDSTRING_BATTLEITEMS      31
 #define STDSTRING_POWERUP          32
-#define STDSTRING_MEGASTONES       33
-#define STDSTRING_ZCRYSTALS        34
 
 // Dynamic Multichoice Callbacks
 

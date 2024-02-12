@@ -63,12 +63,10 @@
                             max(BAG_BERRIES_COUNT,           \
                             max(BAG_ITEMS_COUNT,             \
                             max(BAG_BATTLEITEMS_COUNT,       \
-                            max(BAG_MEGASTONES_COUNT,        \
-                            max(BAG_ZCRYSTALS_COUNT,         \
                             max(BAG_POWERUP_COUNT,           \
                             max(BAG_MEDICINE_COUNT,          \
                             max(BAG_KEYITEMS_COUNT,          \
-                                BAG_POKEBALLS_COUNT)))))))))) + 1)
+                                BAG_POKEBALLS_COUNT)))))))) + 1)
 
 // Up to 8 item slots can be visible at a time
 #define MAX_ITEMS_SHOWN 8
@@ -748,8 +746,6 @@ static bool8 SetupBagMenu(void)
         DrawPocketIndicatorSquare(0, FALSE);
         DrawPocketIndicatorSquare(1, FALSE);
         DrawPocketIndicatorSquare(7, FALSE);
-        DrawPocketIndicatorSquare(8, FALSE);
-        DrawPocketIndicatorSquare(9, FALSE);
         DrawPocketIndicatorSquare(gBagPosition.pocket, TRUE);
         gMain.state++;
         break;
@@ -1656,14 +1652,6 @@ static void OpenContextMenu(u8 taskId)
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
                 break;
             case POWERUP_POCKET:
-                gBagMenu->contextMenuItemsPtr = sContextMenuItems_ItemsPocket;
-                gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
-                break;
-            case MEGASTONES_POCKET:
-                gBagMenu->contextMenuItemsPtr = sContextMenuItems_ItemsPocket;
-                gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
-                break;
-            case ZCRYSTALS_POCKET:
                 gBagMenu->contextMenuItemsPtr = sContextMenuItems_ItemsPocket;
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
                 break;
