@@ -1,0 +1,18 @@
+mapscripts SSDiscovery2NPCRoom2_MapScripts {}
+
+script SSDiscovery2NPCRoom2_OldMan {
+    lock 
+    faceplayer 
+    msgbox(format("My wife and I are supposed to be coming here with a tour group."))
+    msgbox(format("I don't have the heart to tell her I bought tickets for the wrong ship..."))
+    release 
+    end 
+}
+
+script SSDiscovery2NPCRoom2_OldWoman{
+    lock 
+    faceplayer 
+    msgbox(format("I can't seem to find my camera anywhere..."))
+    release 
+    end
+}

@@ -1,0 +1,37 @@
+mapscripts SSDiscoveryNPCRoom2_MapScripts {}
+
+script SSDiscoveryNPCRoom2_Mom {
+    lock 
+    faceplayer 
+    msgbox(format("My daughter's very excited for our trip to Astrua."))
+    msgbox("Maybe a little too excited...")
+    applymovement(1, MovementMom)
+    waitmovement(1)
+    release 
+    end 
+}
+
+script SSDiscoveryNPCRoom2_Daughter{
+    lock 
+    faceplayer 
+    msgbox("Adventure! Adventure!")
+    applymovement(2, MovementDaughter)
+    waitmovement(2)
+    release 
+    end
+}
+
+script SSDiscoveryNPCRoom2_Doll {
+    lock 
+    msgbox("It's a cute Pokemon doll!")
+    release 
+    end
+}
+
+movement MovementMom {
+    face_down
+}
+
+movement MovementDaughter {
+    face_up
+}

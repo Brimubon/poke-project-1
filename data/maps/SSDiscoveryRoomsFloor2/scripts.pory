@@ -1,0 +1,51 @@
+mapscripts SSDiscoveryRoomsFloor2_MapScripts {}
+
+script SSDiscoveryRoomsFloor2_Gentleman{
+    lock 
+    faceplayer 
+    msgbox(format("Considering the price I paid for my ticket, I assumed the food serivce here would've at least been passable."))
+    msgbox(format("But I guess that was too much to ask..."))
+    release 
+    end
+}
+
+script SSDiscoveryRoomsFloor2_Scientist{
+    lock 
+    faceplayer 
+    msgbox(format("I've been tasked with collecting data on the Pokemon that live in Astrua's various caves."))
+    msgbox(format("But the guy I'm assigned to go with... well..."))
+    msgbox(format("He's nice and all, but a little annoying."))
+    release 
+    end 
+}
+
+script SSDiscoveryRoomsFloor2_Girl{
+    lock 
+    faceplayer 
+    msgbox(format("I've never been on a ship like this before."))
+    msgbox(format("This whole experience has been so surreal..."))
+    release 
+    end 
+}
+
+script SSDiscoveryRoomsFloor2_Campers{
+    lock 
+    applymovement(4, MovementCamper1)
+    waitmovement(4)
+    msgbox("C'mon, you can't chicken out now!")
+    msgbox("Pull yourself together!")
+    applymovement(3, MovementCamper2)
+    waitmovement(3)
+    msgbox("Ugh...")
+    msgbox("My stomach...")
+    release 
+    end 
+}
+
+movement MovementCamper1 {
+    walk_in_place_left
+}
+
+movement MovementCamper2 {
+    walk_in_place_slow_right
+}

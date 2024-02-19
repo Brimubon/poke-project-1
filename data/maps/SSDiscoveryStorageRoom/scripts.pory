@@ -1,0 +1,29 @@
+mapscripts SSDiscoveryStorageRoom_MapScripts{}
+
+script SSDiscoveryStorageRoom_Worker1{
+    lock 
+    faceplayer 
+    msgbox(format("How'd you end up in the storage room lookin' for the exit?"))
+    msgbox(format("Ship exit's two floors up, mate."))
+    release 
+    end
+}
+
+script SSDiscoveryStorageRoom_Worker2{
+    lock
+    faceplayer 
+    msgbox(format("Hey! You're not supposed to be here!"))
+    msgbox(format("...Ah, whatever. I don't get paid enough to care."))
+    release 
+    end
+}
+
+script SSDiscoveryStorageRoom_Potion{
+    lock 
+    giveitem(ITEM_POTION, 1)
+    removeobject(3)
+    setflag(FLAG_ITEM_SSDISCOVERY_POTION)
+    release 
+    end
+
+}

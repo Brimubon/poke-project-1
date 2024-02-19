@@ -1,0 +1,45 @@
+mapscripts SSDiscovery2NPCRoom1_MapScripts {}
+
+script SSDiscovery2NPCRoom1_Guy{
+    lock 
+    faceplayer 
+    if(flag(FLAG_SSDISCOVERY_GIVEPOTION)) {
+        msgbox(SSDiscovery2NPCRoom1_GotPotion_0)
+        msgbox(SSDiscovery2NPCRoom1_GotPotion_1)
+        waitmessage
+        release 
+        end
+    } else {
+        msgbox(SSDiscovery2NPCRoom1_NoPotion_0)
+        msgbox(SSDiscovery2NPCRoom1_NoPotion_1)
+        waitmessage
+        giveitem(ITEM_POTION)
+        setflag(FLAG_SSDISCOVERY_GIVEPOTION)
+        release 
+        end
+    }
+
+}
+
+script SSDiscovery2NPCRoom1_Box{
+    lock 
+    msgbox(format("It's a box full of high-tech equipment."))
+    release 
+    end 
+}
+
+text SSDiscovery2NPCRoom1_GotPotion_0 {
+    format("I'm gonna be doing a bunch of exploring stuff, too.")
+}
+
+text SSDiscovery2NPCRoom1_GotPotion_1 {
+    format("Here's to hoping we both find something cool!")
+}
+
+text SSDiscovery2NPCRoom1_NoPotion_0{
+    format("That outfit... are you an explorer?")
+}
+
+text SSDiscovery2NPCRoom1_NoPotion_1{
+    "Here, have this!"
+}
