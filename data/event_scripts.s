@@ -1018,6 +1018,7 @@ EventScript_VsSeekerChargingDone::
 EventScript_StartMenu::
 	goto_if_set FLAG_SYS_SAFARI_MODE, EventScript_StartMenu_BuildSafariZoneMenu
 	goto_if_in_battle_pyramid EventScript_StartMenu_BuildBattlePyramidMenu
+	special ShowTimeWindow
 	call_if_set FLAG_SYS_POKEDEX_GET, EventScript_StartMenu_TogglePokedex
 	call_if_set FLAG_SYS_POKEMON_GET, EventScript_StartMenu_TogglePokemon
 	call_if_set FLAG_SYS_BAG, EventScript_StartMenu_ToggleBag

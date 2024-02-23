@@ -110,9 +110,20 @@ struct ListMenuTemplate gScrollableMultichoice_ListMenuTemplate;
 EWRAM_DATA u16 gScrollableMultichoice_ScrollOffset = 0;
 
 static EWRAM_DATA u8 sSafariBallsWindowId = 0;
+static EWRAM_DATA u8 sStartClockWindowId = 0;
 static EWRAM_DATA u8 sBattlePyramidFloorWindowId = 0;
 
 static const struct WindowTemplate sSafariBallsWindowTemplate = {0, 1, 1, 9, 4, 0xF, 8};
+
+static const struct WindowTemplate sWindowTemplate_StartClock = {
+    .bg = 0, 
+    .tilemapLeft = 1, 
+    .tilemapTop = 1, 
+    .width = 9, // If you want to shorten the dates to Sat., Sun., etc., change this to 9
+    .height = 2, 
+    .paletteNum = 15,
+    .baseBlock = 0x30
+};
 
 static const u8 *const sPyramidFloorNames[FRONTIER_STAGES_PER_CHALLENGE + 1] =
 {
@@ -4358,6 +4369,75 @@ void ShowSafariBallsWindow(void)
     CopyWindowToVram(sSafariBallsWindowId, COPYWIN_GFX);
 }
 
+// If you want to shorten the dates to Sat., Sun., etc., change this to 70
+#define CLOCK_WINDOW_WIDTH 70
+
+const u8 gText_Saturday[] = _("Sat.,");
+const u8 gText_Sunday[] = _("Sun.,");
+const u8 gText_Monday[] = _("Mon.,");
+const u8 gText_Tuesday[] = _("Tue.,");
+const u8 gText_Wednesday[] = _("Wed.,");
+const u8 gText_Thursday[] = _("Thu.,");
+const u8 gText_Friday[] = _("Fri.,");
+
+const u8 *const gDayNameStringsTable[7] = {
+    gText_Saturday,
+    gText_Sunday,
+    gText_Monday,
+    gText_Tuesday,
+    gText_Wednesday,
+    gText_Thursday,
+    gText_Friday,
+};
+
+void ShowTimeWindow(void)
+{
+    const u8 *suffix;
+    u8* ptr;
+    u8 convertedHours;
+
+    // print window
+    sStartClockWindowId = AddWindow(&sWindowTemplate_StartClock);
+    PutWindowTilemap(sStartClockWindowId);
+    DrawStdWindowFrame(sStartClockWindowId, FALSE);
+	
+	RtcCalcLocalTime();
+
+    if (gLocalTime.hours < 12)
+    {
+        if (gLocalTime.hours == 0)
+            convertedHours = 12;
+        else
+            convertedHours = gLocalTime.hours;
+        suffix = gText_AM;
+    }
+    else if (gLocalTime.hours == 12)
+    {
+        convertedHours = 12;
+        if (suffix == gText_AM);
+            suffix = gText_PM;
+    }
+    else
+    {
+        convertedHours = gLocalTime.hours - 12;
+        suffix = gText_PM;
+    }
+
+    StringExpandPlaceholders(gStringVar4, gDayNameStringsTable[(gLocalTime.days % 7)]);
+    // StringExpandPlaceholders(gStringVar4, gText_ContinueMenuTime); // prints "time" word, from version before weekday was added and leaving it here in case anyone would prefer to use it
+    AddTextPrinterParameterized(sStartClockWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL); 
+
+    ptr = ConvertIntToDecimalStringN(gStringVar4, convertedHours, STR_CONV_MODE_LEFT_ALIGN, 3);
+    *ptr = 0xF0;
+
+    ConvertIntToDecimalStringN(ptr + 1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    AddTextPrinterParameterized(sStartClockWindowId, 1, gStringVar4, GetStringRightAlignXOffset(1, suffix, CLOCK_WINDOW_WIDTH) - (CLOCK_WINDOW_WIDTH - GetStringRightAlignXOffset(1, gStringVar4, CLOCK_WINDOW_WIDTH) + 3), 1, 0xFF, NULL); // print time
+
+    AddTextPrinterParameterized(sStartClockWindowId, 1, suffix, GetStringRightAlignXOffset(1, suffix, CLOCK_WINDOW_WIDTH), 1, 0xFF, NULL); // print am/pm
+
+    CopyWindowToVram(sStartClockWindowId, COPYWIN_GFX);
+}
+
 void ShowPyramidFloorWindow(void)
 {
     if (gSaveBlock2Ptr->frontier.curChallengeBattleNum == FRONTIER_STAGES_PER_CHALLENGE)
@@ -4373,6 +4453,8 @@ void ShowPyramidFloorWindow(void)
     CopyWindowToVram(sBattlePyramidFloorWindowId, COPYWIN_GFX);
 }
 
+
+
 void RemoveExtraStartMenuWindows(void)
 {
     if (FlagGet(FLAG_SYS_SAFARI_MODE))
@@ -4380,10 +4462,16 @@ void RemoveExtraStartMenuWindows(void)
         ClearDialogWindowAndFrame(sSafariBallsWindowId, TRUE);
         RemoveWindow(sSafariBallsWindowId);
     }
-    if (InBattlePyramid())
+    else if (InBattlePyramid())
     {
         ClearDialogWindowAndFrame(sBattlePyramidFloorWindowId, TRUE);
         RemoveWindow(sBattlePyramidFloorWindowId);
+    }
+    else
+    {
+        ClearDialogWindowAndFrame(sStartClockWindowId, TRUE);
+        // CopyWindowToVram(sStartClockWindowId, COPYWIN_GFX);
+        RemoveWindow(sStartClockWindowId);
     }
 }
 

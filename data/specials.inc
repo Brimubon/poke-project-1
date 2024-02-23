@@ -539,6 +539,7 @@ gSpecials::
 
 @ Start Menu functions begin below:
 	def_special PlayRainStoppingSoundEffect
+	def_special ShowTimeWindow
 	def_special Script_StartMenu_OpenPokedexMenu
 	def_special Script_StartMenu_OpenPokemonMenu
 	def_special Script_StartMenu_OpenBagMenu

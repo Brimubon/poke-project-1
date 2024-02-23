@@ -153,7 +153,7 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void);
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = 5,
     .width = 9,
     .height = 4,
     .paletteNum = 15,
@@ -175,7 +175,7 @@ static const u8 *const sPyramidFloorNames[FRONTIER_STAGES_PER_CHALLENGE + 1] =
 static const struct WindowTemplate sWindowTemplate_PyramidFloor = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = 5,
     .width = 10,
     .height = 4,
     .paletteNum = 15,
@@ -185,7 +185,7 @@ static const struct WindowTemplate sWindowTemplate_PyramidFloor = {
 static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = 5,
     .width = 12,
     .height = 4,
     .paletteNum = 15,
@@ -286,6 +286,7 @@ static void ShowSaveInfoWindow(void);
 static void RemoveSaveInfoWindow(void);
 static void HideStartMenuWindow(void);
 static void HideStartMenuDebug(void);
+
 
 void SetDexPokemonPokenavFlags(void) // unused
 {
@@ -709,7 +710,7 @@ static bool8 StartMenuPokemonCallback(void)
 
         return TRUE;
     }
-
+	
     return FALSE;
 }
 
