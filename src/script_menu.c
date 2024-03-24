@@ -392,7 +392,6 @@ static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 height, u8 argc, stru
     gMultiuseListMenuTemplate.maxShowed = maxBeforeScroll;
     gMultiuseListMenuTemplate.moveCursorFunc = MultichoiceDynamic_MoveCursor;
     gMultiuseListMenuTemplate.itemVerticalPadding = choicesSpacing;
-
     taskId = CreateTask(Task_HandleScrollingMultichoiceInput, 80);
     gTasks[taskId].data[0] = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
     gTasks[taskId].data[1] = ignoreBPress;
@@ -500,7 +499,6 @@ static void Task_HandleScrollingMultichoiceInput(u8 taskId)
     struct ListMenu *list = (void *) gTasks[gTasks[taskId].data[0]].data;
     s32 positionBeforeScroll = list->selectedRow + list->scrollOffset;
     s32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
-
     switch (input)
     {
     case LIST_HEADER:
